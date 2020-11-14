@@ -1,0 +1,44 @@
+body {
+  background-color: #ecf1f3 !important;
+}
+
+main {
+  position: relative;
+}
+
+#welcome {
+  color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 50px 0;
+}
+
+.show-broad {
+  background-color: #f5f6fa !important;
+}
+
+.show-menu {
+}
+
+#reload {
+  margin-top: 10px;
+}
+
+#alert-choose {
+  display: inline-block;
+  margin-left: 38%;
+  border: 2px solid #dcdcdc;
+  padding: 25px;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px -1px 16px 2px rgba(113, 128, 147, 1);
+  -moz-box-shadow: -1px -1px 16px 2px rgba(113, 128, 147, 1);
+  box-shadow: -1px -1px 16px 2px rgba(113, 128, 147, 1);
+}
+
+#alert-choose > div {
+  margin-left: 40px;
+}
+
+#show-nguoi {
+  display: none;
+}

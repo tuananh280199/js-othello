@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.5.1.min.js"></script>
+
+	<title>Cờ chóm 5 - Cờ lật Việt Nam</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 id="welcome">Welcome to Othello</h1>
+				<div id="alert-choose">
+					<h3>Chọn chế độ chơi</h3>
+					<div>
+						<button id="nguoi" class="btn btn-danger">Người</button>
+						- 
+						<button id="may" class="btn btn-warning">Máy</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<section id="show-nguoi">
+					<link rel="stylesheet" href="ai/css/bootstrap-grid.css">
+					<link rel="stylesheet" href="ai/css/bootstrap.css">
+					<div class="row">
+						<div class="col-lg-2"></div>
+						<div class="col-lg-6">
+							<canvas id="myCanvas" width="480" height="480" style="margin-left: 20px"></canvas>
+						</div>	
+						<div class="col-lg-4" style="padding: 50px">
+							<div class="row">
+								<button class="btn btn-warning" style="margin-top: 10px" onclick="initial_board()">Ván mới</button>
+							</div>
+							<div id="show-menu" class="row show-menu">
+								<button id="reload" class="btn btn-warning">Chọn lại chế độ</button>
+							</div>
+							<div class="row">
+								<label class="col-form-label" style="color: blue; padding-top: 200px">Score</label>
+							</div>
+							<div class="row">
+								<label class="col-form-label"> Black: &nbsp;</label>
+								<label class="col-form-label" id="BLACK">2</label>
+							</div>
+							<div class="row">
+								<label class="col-form-label"> White: &nbsp;</label>
+								<label class="col-form-label" id="WHITE">2</label>
+							</div>
+						</div>
+					</div>
+					<script src="ai/js/controller.js"></script>
+				</section>
+				<section id="show-may">
+
+				</section>
+			</div>
+		</div>
+	</div>
+	<script src="js/process.js"></script>
+</body>
+</html>
