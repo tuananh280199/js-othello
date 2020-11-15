@@ -15,11 +15,11 @@
 			<div class="col-lg-12">
 				<h1 id="welcome">Welcome to Othello</h1>
 				<div id="alert-choose">
-					<h3>Chọn chế độ chơi</h3>
+					<h3>Select Game Mode</h3>
 					<div>
-						<button id="nguoi" class="btn btn-danger">Người</button>
+						<button id="nguoi" class="btn btn-danger">Person</button>
 						- 
-						<button id="may" class="btn btn-warning">Máy</button>
+						<button id="may" class="btn btn-warning">Computer</button>
 					</div>
 				</div>
 			</div>
@@ -34,13 +34,16 @@
 						</div>	
 						<div class="col-lg-4" style="padding: 50px">
 							<div class="row">
-								<button class="btn btn-warning" style="margin-top: 10px" onclick="initial_board()">Ván mới</button>
+								<button class="btn btn-warning" style="margin-top: 10px" onclick="initial_board()">New Game</button>
 							</div>
 							<div id="show-menu" class="row show-menu">
-								<button id="reload" class="btn btn-warning">Chọn lại chế độ</button>
+								<button id="reload" class="btn btn-warning">Select Game Mode</button>
+							</div>
+							<div class="row" style="margin-top: 10px; padding-top: 70px"> 
+								<p id="turn">Person move (Black)</p>
 							</div>
 							<div class="row">
-								<label class="col-form-label" style="color: blue; padding-top: 200px">Score</label>
+								<label class="col-form-label" style="color: blue; padding-top: 80px">Score</label>
 							</div>
 							<div class="row">
 								<label class="col-form-label"> Black: &nbsp;</label>
