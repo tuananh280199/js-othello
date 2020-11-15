@@ -1,11 +1,14 @@
 var blackBackground;
 var discLayer;
-var scoreLabel;
 var canMoveLayer;
-const gap = 3; //khoảng cách padding mỗi ô cờ
-const sizeChess = 65; //kích thước chess
+const gap = 2; //khoảng cách padding mỗi ô cờ
+const sizeChess = 48; //kích thước chess
 var turn = 1; //1 quân đen đi trước, 2 quân trắng đi trước
 var gameOver = false;
+
+var blackChessLabel;
+var whiteChessLabel;
+var newGame;
 
 let checkSwapBlack = false;
 let checkSwapWhite = false;
@@ -22,14 +25,45 @@ var discs = [
 	[0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
+var discsCache = [
+	[0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 2, 1, 0, 0, 0],
+	[0, 0, 0, 1, 2, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0],
+];
+
+const marginTop = 50;
+const marginLeft = 270;
+
 window.onload = function () {
 	blackBackground = document.getElementById("blackBackground");
 	blackBackground.style.width = `${sizeChess * 8 + gap * 9}px`;
 	blackBackground.style.height = `${sizeChess * 8 + gap * 9}px`;
+	blackBackground.style.top = `${marginTop}px`;
+	blackBackground.style.left = `${marginLeft}px`;
 
 	discLayer = document.getElementById("discLayer");
-	scoreLabel = document.getElementById("score");
 	canMoveLayer = document.getElementById("canMoveLayer");
+	blackChessLabel = document.getElementById("black");
+	whiteChessLabel = document.getElementById("white");
+
+	newGame = document.getElementById("new-game-human");
+	newGame.addEventListener("click", function () {
+		for (var row = 0; row < 8; row++) {
+			for (var column = 0; column < 8; column++) {
+				discs[row][column] = discsCache[row][column];
+			}
+		}
+		turn = 1;
+		drawGreenSquares();
+		drawDiscs();
+		drawCanMoveLayer();
+		
+	});
 
 	drawGreenSquares();
 	drawDiscs();
@@ -45,7 +79,7 @@ function drawGreenSquares() {
 			greenSquare.style.position = "absolute";
 			greenSquare.style.width = `${sizeChess}px`;
 			greenSquare.style.height = `${sizeChess}px`;
-			greenSquare.style.backgroundColor = "green";
+			greenSquare.style.backgroundColor = "#ECF1F3";
 			greenSquare.style.left = `${(sizeChess + gap) * column + gap}px`;
 			greenSquare.style.top = `${(sizeChess + gap) * row + gap}px`;
 			greenSquare.setAttribute(
@@ -92,8 +126,8 @@ function drawCanMoveLayer() {
 				hint.style.position = "absolute";
 				hint.style.width = `${sizeChess}px`;
 				hint.style.height = `${sizeChess}px`;
-				hint.style.left = `${(sizeChess + gap) * column + gap}px`;
-				hint.style.top = `${(sizeChess + gap) * row + gap + 8}px`;
+				hint.style.left = `${(sizeChess + gap) * column + gap + marginLeft}px`;
+				hint.style.top = `${(sizeChess + gap) * row + gap + marginTop}px`;
 				hint.style.zIndex = 10;
 				hint.style.display = "flex";
 				hint.style.alignItems = "center";
@@ -101,8 +135,8 @@ function drawCanMoveLayer() {
 				hint.setAttribute("onclick", "clickSquare(" + row + "," + column + ")");
 
 				var dotHint = document.createElement("div");
-				dotHint.style.height = "15px";
-				dotHint.style.width = "15px";
+				dotHint.style.height = "10px";
+				dotHint.style.width = "10px";
 				dotHint.style.borderRadius = "50%";
 				if (turn == 1) {
 					dotHint.style.backgroundColor = "black";
@@ -110,6 +144,7 @@ function drawCanMoveLayer() {
 				}
 				if (turn == 2) {
 					dotHint.style.backgroundColor = "white";
+					dotHint.style.border = "1px solid black";
 					hint.appendChild(dotHint);
 				}
 				canMoveLayer.appendChild(hint);
@@ -141,7 +176,8 @@ function reDrawScore() {
 		}
 	}
 
-	scoreLabel.innerHTML = `Black: ${chessBlack} White: ${chessWhite}`;
+	blackChessLabel.innerHTML = "Black: " + chessBlack;
+	whiteChessLabel.innerHTML = "Black: " + chessWhite;
 	checkSwapChess();
 }
 
@@ -417,14 +453,17 @@ function drawDiscs() {
 				disc.style.position = "absolute";
 				disc.style.width = `${sizeChess - 4}px`;
 				disc.style.height = `${sizeChess - 4}px`;
-				disc.style.left = `${(sizeChess + gap) * column + gap + 2}px`;
-				disc.style.top = `${(sizeChess + gap) * row + gap + 8 + 2}px`;
+				disc.style.left = `${
+					(sizeChess + gap) * column + gap + 2 + marginLeft
+				}px`;
+				disc.style.top = `${(sizeChess + gap) * row + gap + 2 + marginTop}px`;
 				disc.style.borderRadius = "50%";
 				if (value == 1) {
 					disc.style.backgroundColor = "black";
 				}
 				if (value == 2) {
 					disc.style.backgroundColor = "white";
+					disc.style.border = "1px solid black";
 				}
 				discLayer.appendChild(disc);
 			}

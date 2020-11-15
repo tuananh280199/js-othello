@@ -17,14 +17,14 @@
 				<div id="alert-choose">
 					<h3>Select Game Mode</h3>
 					<div>
-						<button id="nguoi" class="btn btn-danger">Person</button>
+						<button id="human" class="btn btn-danger">Person</button>
 						- 
-						<button id="may" class="btn btn-warning">Computer</button>
+						<button id="ai" class="btn btn-warning">Computer</button>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-12">
-				<section id="show-nguoi">
+				<section id="show-ai">
 					<link rel="stylesheet" href="ai/css/bootstrap-grid.css">
 					<link rel="stylesheet" href="ai/css/bootstrap.css">
 					<div class="row">
@@ -37,7 +37,7 @@
 								<button class="btn btn-warning" style="margin-top: 10px" onclick="initial_board()">New Game</button>
 							</div>
 							<div id="show-menu" class="row show-menu">
-								<button id="reload" class="btn btn-warning">Select Game Mode</button>
+								<button id="reload" class="btn btn-danger">Select Game Mode</button>
 							</div>
 							<div class="row" style="margin-top: 10px; padding-top: 70px"> 
 								<p id="turn">Person move (Black)</p>
@@ -57,8 +57,23 @@
 					</div>
 					<script src="ai/js/controller.js"></script>
 				</section>
-				<section id="show-may">
-
+				<section id="show-human">
+					<link rel="stylesheet" href="human/human.css" />
+					<div id="blackBackground"></div>
+					<div id="discLayer"></div>
+					<div id="canMoveLayer"></div>
+					<div class="score">
+						<label class="col-form-label" style="color: blue; padding-top: 80px">Score</label>
+						<div id="black" style="margin: 10px 0px;">Black: 2</div>
+						<div id="white">White: 2</div>
+					</div>
+					<div class="options">
+						<button id="new-game-human" class="btn btn-warning">New Game</button>
+						<br>
+						<br>
+						<button id="reload-human" class="btn btn-danger">Select Game Mode</button>
+					</div>
+					<script src="human/othello.js"></script>
 				</section>
 			</div>
 		</div>

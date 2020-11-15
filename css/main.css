@@ -41,6 +41,9 @@ main {
   margin-left: 30px;
 }
 
-#show-nguoi {
+#show-human {
+  display: none;
+}
+#show-ai {
   display: none;
 }

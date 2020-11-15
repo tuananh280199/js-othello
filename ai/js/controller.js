@@ -58,8 +58,7 @@ function on_canvas_click(ev) {
       }
       update_board(x, y, true);
       player = -player;
-      turn.innerHTML =
-        player === 1 ? "Computer move (White)" : "Person move (Black)";
+      turn.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
       setTimeout(function () {
         if (check_game_over()) {
           return;
@@ -69,8 +68,7 @@ function on_canvas_click(ev) {
         count_board();
         player = -player;
         check_game_over();
-        turn.innerHTML =
-          player === 1 ? "Computer move (White)" : "Person move (Black)";
+        turn.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
       }, 500);
     }
   }
@@ -99,7 +97,7 @@ function initial_board() {
       if (board[i][j] === -1) draw_circle(i, j, -1);
     }
   }
-  if (first_click) start_guide();
+  // if (first_click) start_guide();
   document.getElementById("BLACK").innerHTML = "2";
   document.getElementById("WHITE").innerHTML = "2";
 }
