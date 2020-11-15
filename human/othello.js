@@ -2,7 +2,7 @@ var blackBackground;
 var discLayer;
 var scoreLabel;
 var canMoveLayer;
-const grap = 3; //khoảng cách padding mỗi ô cờ
+const gap = 3; //khoảng cách padding mỗi ô cờ
 const sizeChess = 65; //kích thước chess
 var turn = 1; //1 quân đen đi trước, 2 quân trắng đi trước
 var gameOver = false;
@@ -24,8 +24,8 @@ var discs = [
 
 window.onload = function () {
 	blackBackground = document.getElementById("blackBackground");
-	blackBackground.style.width = `${sizeChess * 8 + grap * 9}px`;
-	blackBackground.style.height = `${sizeChess * 8 + grap * 9}px`;
+	blackBackground.style.width = `${sizeChess * 8 + gap * 9}px`;
+	blackBackground.style.height = `${sizeChess * 8 + gap * 9}px`;
 
 	discLayer = document.getElementById("discLayer");
 	scoreLabel = document.getElementById("score");
@@ -46,8 +46,8 @@ function drawGreenSquares() {
 			greenSquare.style.width = `${sizeChess}px`;
 			greenSquare.style.height = `${sizeChess}px`;
 			greenSquare.style.backgroundColor = "green";
-			greenSquare.style.left = `${(sizeChess + grap) * column + grap}px`;
-			greenSquare.style.top = `${(sizeChess + grap) * row + grap}px`;
+			greenSquare.style.left = `${(sizeChess + gap) * column + gap}px`;
+			greenSquare.style.top = `${(sizeChess + gap) * row + gap}px`;
 			greenSquare.setAttribute(
 				"onclick",
 				"clickSquare(" + row + "," + column + ")"
@@ -59,7 +59,7 @@ function drawGreenSquares() {
 
 function clickSquare(row, column) {
 	//Nếu đã đi rồi giá trị khác 0 thì không đi được nữa
-	if (gameOver) return;
+	// if (gameOver) return;
 
 	if (discs[row][column] != 0) return;
 
@@ -71,10 +71,10 @@ function clickSquare(row, column) {
 		if (turn == 1 && canMove(2)) turn = 2;
 		else if (turn == 2 && canMove(1)) turn = 1;
 
-		if (canMove(1) == false && canMove(2) == false) {
-			alert("Game over");
-			gameOver = true;
-		}
+		// if (canMove(1) == false && canMove(2) == false) {
+		// 	alert("Game over");
+		// 	gameOver = true;
+		// }
 
 		drawDiscs();
 		drawCanMoveLayer();
@@ -92,8 +92,8 @@ function drawCanMoveLayer() {
 				hint.style.position = "absolute";
 				hint.style.width = `${sizeChess}px`;
 				hint.style.height = `${sizeChess}px`;
-				hint.style.left = `${(sizeChess + grap) * column + grap}px`;
-				hint.style.top = `${(sizeChess + grap) * row + grap + 8}px`;
+				hint.style.left = `${(sizeChess + gap) * column + gap}px`;
+				hint.style.top = `${(sizeChess + gap) * row + gap + 8}px`;
 				hint.style.zIndex = 10;
 				hint.style.display = "flex";
 				hint.style.alignItems = "center";
@@ -146,6 +146,8 @@ function reDrawScore() {
 }
 
 function checkSwapChess() {
+	endGame();
+
 	let numberCheck = 0;
 	for (var row = 0; row < 8; row++) {
 		for (var column = 0; column < 8; column++) {
@@ -156,28 +158,34 @@ function checkSwapChess() {
 		}
 	}
 
-	if (numberCheck == 0) {
-		let chessSwap = "";
-		if (turn == 1) {
-			turn = 2;
-			chessSwap = "White";
-			checkSwapBlack = true;
-		} else if (turn == 2) {
-			turn = 1;
-			chessSwap = "Black";
-			checkSwapWhite = true;
+	console.log(gameOver);
+	if (gameOver == false) {
+		if (numberCheck == 0) {
+			let chessSwap = "";
+			if (turn == 1) {
+				turn = 2;
+				chessSwap = "White";
+				checkSwapBlack = true;
+				drawCanMoveLayer();
+				setTimeout(() => {
+					alert(`${chessSwap} continue ! `);
+				}, 100);
+			} else if (turn == 2) {
+				turn = 1;
+				chessSwap = "Black";
+				checkSwapWhite = true;
+				drawCanMoveLayer();
+				setTimeout(() => {
+					alert(`${chessSwap} continue ! `);
+				}, 100);
+			}
 		}
-		drawCanMoveLayer();
-		setTimeout(() => {
-			alert(`${chessSwap} continue ! `);
-		}, 100);
 	}
-
-	endGame();
 }
 
-function endGame(){
+function endGame() {
 	if (checkSwapBlack && checkSwapWhite) {
+		gameOver = true;
 		setTimeout(() => {
 			alert("Game over");
 			location.reload();
@@ -188,19 +196,19 @@ function endGame(){
 	for (var row = 0; row < 8; row++) {
 		for (var column = 0; column < 8; column++) {
 			var value = discs[row][column];
-			if(value != 0){
+			if (value != 0) {
 				countFillBroad += 1;
 			}
 		}
 	}
 
-	if(countFillBroad == 64){
+	if (countFillBroad == 64) {
+		gameOver = true;
 		setTimeout(() => {
 			alert("Game over");
 			location.reload();
 		}, 100);
 	}
-
 }
 
 function canClickSpot(id, row, column) {
@@ -393,8 +401,8 @@ function flipDiscs(affectedDiscs) {
 		}
 	}
 
-	if(turn == 1) checkSwapBlack = false;
-	if(turn == 2) checkSwapWhite = false;
+	if (turn == 1) checkSwapBlack = false;
+	if (turn == 2) checkSwapWhite = false;
 }
 
 //Vẽ quân cờ
@@ -409,8 +417,8 @@ function drawDiscs() {
 				disc.style.position = "absolute";
 				disc.style.width = `${sizeChess - 4}px`;
 				disc.style.height = `${sizeChess - 4}px`;
-				disc.style.left = `${(sizeChess + grap) * column + grap + 2}px`;
-				disc.style.top = `${(sizeChess + grap) * row + grap + 8 + 2}px`;
+				disc.style.left = `${(sizeChess + gap) * column + gap + 2}px`;
+				disc.style.top = `${(sizeChess + gap) * row + gap + 8 + 2}px`;
 				disc.style.borderRadius = "50%";
 				if (value == 1) {
 					disc.style.backgroundColor = "black";
