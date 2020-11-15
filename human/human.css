@@ -1,24 +1,32 @@
 #blackBackground {
-	position: absolute;
-	background-color: black;
-	left: 0px;
-	right: 0px;
-	height: 500px;
-	width: 500px;
+  position: absolute;
+  background-color: black;
+  left: 0px;
+  right: 0px;
+  height: 500px;
+  width: 500px;
 }
 
 .score {
-	position: absolute;
-	left: 70%;
-	top: 275px;
-	width: 540px;
-	font-size: 16px;
+  position: absolute;
+  left: 70%;
+  top: 275px;
+  width: 540px;
+  font-size: 16px;
 }
 
-.options{
-	position: absolute;
-	left: 70%;
-	top: 50px;
-	width: 540px;
-	font-size: 16px;
+.options {
+  position: absolute;
+  left: 70%;
+  top: 50px;
+  width: 540px;
+  font-size: 16px;
+}
+
+.moveHuman {
+  position: absolute;
+  left: 70%;
+  top: 150px;
+  width: 540px;
+  font-size: 16px;
 }

@@ -14,6 +14,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 id="welcome">Welcome to Othello</h1>
+				<h2 id="selectMode"></h2>
 				<div id="alert-choose">
 					<h3>Select Game Mode</h3>
 					<div>
@@ -40,7 +41,7 @@
 								<button id="reload" class="btn btn-danger">Select Game Mode</button>
 							</div>
 							<div class="row" style="margin-top: 10px; padding-top: 70px"> 
-								<p id="turn">Person move (Black)</p>
+								<p class="turnMove" id="turn">Person move (Black)</p>
 							</div>
 							<div class="row">
 								<label class="col-form-label" style="color: blue; padding-top: 80px">Score</label>
@@ -72,6 +73,9 @@
 						<br>
 						<br>
 						<button id="reload-human" class="btn btn-danger">Select Game Mode</button>
+					</div>
+					<div class="moveHuman" style="margin-top: 10px; padding-top: 70px"> 
+						<p class="turnMove" id="turnHuman">Black move</p>
 					</div>
 					<script src="human/othello.js"></script>
 				</section>
