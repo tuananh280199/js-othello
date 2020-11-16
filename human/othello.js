@@ -103,13 +103,12 @@ function clickSquare(row, column) {
     discs[row][column] = turn;
 
     if (turn == 1 && canMove(2)) {
-		turn = 2;
-		turnMoveHuman.innerHTML = "White move";
-	}
-	else if (turn == 2 && canMove(1)) {
-		turn = 1;
-		turnMoveHuman.innerHTML = "Black move";
-	}
+      turn = 2;
+      turnMoveHuman.innerHTML = "White move";
+    } else if (turn == 2 && canMove(1)) {
+      turn = 1;
+      turnMoveHuman.innerHTML = "Black move";
+    }
 
     // if (canMove(1) == false && canMove(2) == false) {
     // 	alert("Game over");
@@ -146,7 +145,7 @@ function drawCanMoveLayer() {
         dotHint.style.borderRadius = "50%";
         if (turn == 1) {
           dotHint.style.backgroundColor = "black";
-		  hint.appendChild(dotHint);
+          hint.appendChild(dotHint);
         }
         if (turn == 2) {
           dotHint.style.backgroundColor = "white";
@@ -449,9 +448,6 @@ function flipDiscs(affectedDiscs) {
 
 //Vẽ quân cờ
 function drawDiscs() {
-<<<<<<< HEAD
-	
-=======
   discLayer.innerHTML = "";
   for (var row = 0; row < 8; row++) {
     for (var column = 0; column < 8; column++) {
@@ -478,5 +474,4 @@ function drawDiscs() {
       }
     }
   }
->>>>>>> bda342340c5a2d48af623f34b1d38503a9cbaf47
 }
