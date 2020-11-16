@@ -1,4 +1,4 @@
-var turn = document.getElementById("turn");
+var turnpvp = document.getElementById("turnpvp");
 const csize = 50;
 var cut_off = 5;
 var board = [
@@ -58,7 +58,8 @@ function on_canvas_click(ev) {
       }
       update_board(x, y, true);
       player = -player;
-      turn.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
+      turnpvp.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
+      console.log(turnpvp.innerHTML);
       setTimeout(function () {
         if (check_game_over()) {
           return;
@@ -68,7 +69,7 @@ function on_canvas_click(ev) {
         count_board();
         player = -player;
         check_game_over();
-        turn.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
+        turnpvp.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
       }, 500);
     }
   }

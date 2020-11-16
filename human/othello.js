@@ -451,12 +451,13 @@ function drawDiscs() {
 			} else {
 				var disc = document.createElement("div");
 				disc.style.position = "absolute";
-				disc.style.width = `${sizeChess - 4}px`;
-				disc.style.height = `${sizeChess - 4}px`;
+				disc.style.width = `${sizeChess - 12}px`;
+				disc.style.height = `${sizeChess - 12}px`;
+				disc.style.margin = "auto auto";
 				disc.style.left = `${
-					(sizeChess + gap) * column + gap + 2 + marginLeft
+					(sizeChess + gap) * column + gap + 6 + marginLeft
 				}px`;
-				disc.style.top = `${(sizeChess + gap) * row + gap + 2 + marginTop}px`;
+				disc.style.top = `${(sizeChess + gap) * row + gap + 6 + marginTop}px`;
 				disc.style.borderRadius = "50%";
 				if (value == 1) {
 					disc.style.backgroundColor = "black";
