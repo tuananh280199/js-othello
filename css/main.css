@@ -10,14 +10,21 @@ main {
   color: rebeccapurple;
   display: flex;
   justify-content: center;
-  margin: 50px 0 50px 0;
+  margin: 50px 0 20px 0;
+}
+
+#selectMode {
+  color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
 }
 
 .show-broad {
   background-color: #f5f6fa !important;
 }
 
-#turn {
+.turnMove {
   color: purple;
   font-size: 21px;
 }

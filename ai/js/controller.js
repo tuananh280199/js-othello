@@ -1,4 +1,8 @@
-var turnpvp = document.getElementById("turnpvp");
+<<<<<<< HEAD
+
+=======
+var turnMoveAI = document.getElementById("turn");
+>>>>>>> bda342340c5a2d48af623f34b1d38503a9cbaf47
 const csize = 50;
 var cut_off = 5;
 var board = [
@@ -58,8 +62,12 @@ function on_canvas_click(ev) {
       }
       update_board(x, y, true);
       player = -player;
-      turnpvp.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
-      console.log(turnpvp.innerHTML);
+<<<<<<< HEAD
+
+=======
+      turnMoveAI.innerHTML =
+        player === 1 ? "Computer move (White)" : "Person move (Black)";
+>>>>>>> bda342340c5a2d48af623f34b1d38503a9cbaf47
       setTimeout(function () {
         if (check_game_over()) {
           return;
@@ -69,7 +77,12 @@ function on_canvas_click(ev) {
         count_board();
         player = -player;
         check_game_over();
-        turnpvp.innerHTML = player === 1 ? "Computer move (White)" : "Person move (Black)";
+<<<<<<< HEAD
+
+=======
+        turnMoveAI.innerHTML =
+          player === 1 ? "Computer move (White)" : "Person move (Black)";
+>>>>>>> bda342340c5a2d48af623f34b1d38503a9cbaf47
       }, 500);
     }
   }
